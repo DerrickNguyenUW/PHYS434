@@ -29,7 +29,30 @@ disp(norminv(0.00003))
 % The negative sign from norminv(x) indicates 
 
 % Section 2B
-% Plot of expontential distribution with ~100k samples.
+% Plots of expontential distribution with 100k samples and mu at 1.
+x = linspace(0,20,100000);
+expD = makedist("Exponential",'mu', 1);
+subplot(2,2,2)
+plot(x,pdf(expD,x),"LineWidth",2);
+set(gca,'YScale','log')
+
+subplot(2,2,1)
+plot(x,pdf(expD,x),"LineWidth",2); hold on;
+
+% Plot of exponential distribution with 100k samples and mu at 3.
+x = linspace(0,20,100000);
+expD = makedist("Exponential",'mu', 3);
+subplot(2,2,4)
+plot(x,pdf(expD,x),"LineWidth",2);
+set(gca,'YScale','log')
+
+subplot(2,2,3)
+plot(x,pdf(expD,x),"LineWidth",2); hold on;
+% Here, I have shown four exponential distributions but the second and 
+% fourth plots have the y axis in log scale. The top row has mu at 1 and
+% the bottom row has mu at 3. We see how the distribution gets wider and
+% initial y value decreases as mu increases. This means the slope decreases
+% in the plot where y is in log scale. 
 
 % Section 3A
 % I selected a value of #VALUE as my hypothetical measurement. 
