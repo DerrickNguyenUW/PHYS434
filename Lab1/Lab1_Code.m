@@ -58,7 +58,7 @@ xlabel("x"); ylabel("Probability"); figure;
 %% Section 3A
 % I selected a value of 3.2 as my hypothetical measurement. 
 
-% Section 3B
+%% Section 3B
 % The statistical question I want to ask is "What is the probability
 % of the background producing a signal of 5.4 or larger?"
 
