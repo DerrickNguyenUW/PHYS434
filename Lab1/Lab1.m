@@ -1,4 +1,5 @@
 %% Lab 1
+
 %% A Little Statistics 
 
 %% Section 1B
