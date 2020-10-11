@@ -84,7 +84,7 @@ disp(normcdf(-1))
 
     0.1587
 
-</pre><h2 id="3">Section 1C</h2><p>Finds the associated sigma of the inverse of the standard normal distribution using norminv(p). These values are approximately equal to the expected value.</p><pre class="codeinput">disp(norminv(0.84134))
+</pre><h2 id="3">Section 1C</h2><p>Finds the associated sigma of the inverse of the standard normal distribution using norminv(p). These values are approximately equal to the expected value. .</p><pre class="codeinput">disp(norminv(0.84134))
 disp(norminv(0.97725))
 disp(norminv(0.99865))
 disp(norminv(0.99997))
@@ -185,6 +185,7 @@ disp(norminv(pHead))
 </pre><h2 id="14">Section 1D</h2><p>Since the distributions are discrete, the probabilities and sigmas are also discrete. The implication of this in an experiment is how we only expect certain values. For example, we will expect integer numbers and not numbers like 1.2, 5.28, and the like. Also, we know that the distribution will list every possible outcome and that the sum of all the probabilities will be equal to one as long as the distribution is normalized.</p><h2 id="15">Section 1E</h2><p>Although the results are discrete, the parameters aren't. This means the mean of a Poisson distribution can be a non-integer number like 9.2. The reason why this makes sense is because the total number of events change over time but this doesn't change what types of resuls we expect which is only integer numbers. So if the sum of all my outcomes is 10 but I increase my total number of outcomes from 2 to 3, we will observe this result where the mean shifts from 5 to 3.33.</p><p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2018b</a><br></p></div><!--
 ##### SOURCE BEGIN #####
 %% Lab 1
+
 %% A Little Statistics 
 
 %% Section 1B
@@ -201,7 +202,7 @@ disp(normcdf(-1))
 %% Section 1C
 % Finds the associated sigma of the inverse of the standard normal 
 % distribution using norminv(p). These values are approximately 
-% equal to the expected value. 
+% equal to the expected value. . 
 disp(norminv(0.84134))
 disp(norminv(0.97725))
 disp(norminv(0.99865))

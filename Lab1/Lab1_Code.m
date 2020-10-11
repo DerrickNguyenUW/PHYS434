@@ -1,4 +1,5 @@
 %% Lab 1
+
 %% A Little Statistics 
 
 %% Section 1B
@@ -15,7 +16,7 @@ disp(normcdf(-1))
 %% Section 1C
 % Finds the associated sigma of the inverse of the standard normal 
 % distribution using norminv(p). These values are approximately 
-% equal to the expected value. 
+% equal to the expected value. . 
 disp(norminv(0.84134))
 disp(norminv(0.97725))
 disp(norminv(0.99865))
