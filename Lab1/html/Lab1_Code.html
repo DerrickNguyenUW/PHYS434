@@ -6,7 +6,7 @@
    <!--
 This HTML was auto-generated from MATLAB code.
 To make changes, update the MATLAB code and republish this document.
-      --><title>Lab 1</title><meta name="generator" content="MATLAB 9.5"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2020-10-10"><meta name="DC.source" content="Lab1.m"><style type="text/css">
+      --><title>Lab 1</title><meta name="generator" content="MATLAB 9.5"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2020-10-10"><meta name="DC.source" content="Lab1_Code.m"><style type="text/css">
 html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
 
 html { min-height:100%; margin-bottom:1px; }
@@ -66,7 +66,7 @@ table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px soli
 
 
 
-  </style></head><body><div class="content"><h1>Lab 1</h1><!--introduction--><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">A Little Statistics</a></li><li><a href="#2">Section 1B</a></li><li><a href="#3">Section 1C</a></li><li><a href="#4">Section 1D</a></li><li><a href="#5">Section 2B</a></li><li><a href="#6">Section 3A</a></li><li><a href="#7">Section 3C</a></li><li><a href="#8">Section 3D</a></li><li><a href="#9">Section 3E</a></li><li><a href="#10">Section 4</a></li><li><a href="#11">Non-Continuous Distributions</a></li><li><a href="#12">Section 1B</a></li><li><a href="#13">Section 1C</a></li><li><a href="#14">Section 1D</a></li><li><a href="#15">Section 1E</a></li></ul></div><h2 id="1">A Little Statistics</h2><h2 id="2">Section 1B</h2><p>Integrates a standard normal distribution using normcdf(x). These values are approximately equal to the expected values listed on the z-table on Wikipedia.</p><pre class="codeinput">disp(normcdf(0))
+  </style></head><body><div class="content"><h1>Lab 1</h1><!--introduction--><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">A Little Statistics</a></li><li><a href="#2">Section 1B</a></li><li><a href="#3">Section 1C</a></li><li><a href="#4">Section 1D</a></li><li><a href="#5">Section 2B</a></li><li><a href="#6">Section 3A</a></li><li><a href="#7">Section 3B</a></li><li><a href="#8">Section 3C</a></li><li><a href="#9">Section 3D</a></li><li><a href="#10">Section 3E</a></li><li><a href="#11">Section 4</a></li><li><a href="#12">Non-Continuous Distributions</a></li><li><a href="#13">Section 1B</a></li><li><a href="#14">Section 1C</a></li><li><a href="#15">Section 1D</a></li><li><a href="#16">Section 1E</a></li></ul></div><h2 id="1">A Little Statistics</h2><h2 id="2">Section 1B</h2><p>Integrates a standard normal distribution using normcdf(x). These values are approximately equal to the expected values listed on the z-table on Wikipedia.</p><pre class="codeinput">disp(normcdf(0))
 disp(normcdf(0.1))
 disp(normcdf(0.3))
 disp(normcdf(0.5))
@@ -123,18 +123,15 @@ xlabel(<span class="string">"x"</span>); ylabel(<span class="string">"Probabilit
 <span class="comment">% a wider exponentential distribution. Specifically, the number of</span>
 <span class="comment">% instances at 0 decreases but there's an increase in the number of</span>
 <span class="comment">% instance past 20. This would mean it gets less steep too.</span>
-</pre><img vspace="5" hspace="5" src="Lab1_01.png" alt=""> <img vspace="5" hspace="5" src="Lab1_02.png" alt=""> <img vspace="5" hspace="5" src="Lab1_03.png" alt=""> <h2 id="6">Section 3A</h2><p>I selected a value of 3.2 as my hypothetical measurement.</p><pre class="codeinput"><span class="comment">% Section 3B</span>
-<span class="comment">% The statistical question I want to ask is "What is the probability</span>
-<span class="comment">% of the background producing a signal of 5.4 or larger?"</span>
-</pre><h2 id="7">Section 3C</h2><p>If I were to convert my statistical question into an integral, I would need to evaluate the area underneath the distribution from the stated hypothetical value to infinity. These are the lower and upper bounds of the integral respectively. This is equivalent to integrating the distribution from negative infinity to the hypothetical value and subtracting one by this result. However, the area underneath the distribution from negative infinity to zero is zero so we are really calculating the area from 0 to z where z is 5.4. Now, we want the probability of producing a signal of 5.4 or larger so we subtract area calculated by the integral of the exponential distribution from negative infinity to 5.4 from one.</p><h2 id="8">Section 3D</h2><p>Calculates the probabilty of background producing a signal.</p><pre class="codeinput">expD = makedist(<span class="string">"Exponential"</span>,<span class="string">'mu'</span>,3);
+</pre><img vspace="5" hspace="5" src="Lab1_Code_01.png" alt=""> <img vspace="5" hspace="5" src="Lab1_Code_02.png" alt=""> <img vspace="5" hspace="5" src="Lab1_Code_03.png" alt=""> <h2 id="6">Section 3A</h2><p>I selected a value of 3.2 as my hypothetical measurement.</p><h2 id="7">Section 3B</h2><p>The statistical question I want to ask is "What is the probability of the background producing a signal of 5.4 or larger?"</p><h2 id="8">Section 3C</h2><p>If I were to convert my statistical question into an integral, I would need to evaluate the area underneath the distribution from the stated hypothetical value to infinity. These are the lower and upper bounds of the integral respectively. This is equivalent to integrating the distribution from negative infinity to the hypothetical value and subtracting one by this result. However, the area underneath the distribution from negative infinity to zero is zero so we are really calculating the area from 0 to z where z is 5.4. Now, we want the probability of producing a signal of 5.4 or larger so we subtract area calculated by the integral of the exponential distribution from negative infinity to 5.4 from one.</p><h2 id="9">Section 3D</h2><p>Calculates the probabilty of background producing a signal.</p><pre class="codeinput">expD = makedist(<span class="string">"Exponential"</span>,<span class="string">'mu'</span>,3);
 pTail = 1-cdf(expD,5.4);
 disp(<span class="string">"    "</span>+pTail*100+<span class="string">"%"</span>)
 </pre><pre class="codeoutput">    16.5299%
-</pre><h2 id="9">Section 3E</h2><p>Converts probabilty into equivalent sigma.</p><pre class="codeinput">pHead = cdf(expD,5.4);
+</pre><h2 id="10">Section 3E</h2><p>Converts probabilty into equivalent sigma.</p><pre class="codeinput">pHead = cdf(expD,5.4);
 disp(norminv(pHead))
 </pre><pre class="codeoutput">    0.9729
 
-</pre><h2 id="10">Section 4</h2><p>Some patterns I noticed from using various hypothetical measurement values is how the probabilities and the sigmas change. Specifically, as the hypothetical measurement increases, the probability decreases while sigma increases. Also, as the hypothetical measurement decreases, the probability increases while sigma decreases.</p><pre class="codeinput">expD = makedist(<span class="string">"Exponential"</span>,<span class="string">'mu'</span>,3);
+</pre><h2 id="11">Section 4</h2><p>Some patterns I noticed from using various hypothetical measurement values is how the probabilities and the sigmas change. Specifically, as the hypothetical measurement increases, the probability decreases while sigma increases. Also, as the hypothetical measurement decreases, the probability increases while sigma decreases.</p><pre class="codeinput">expD = makedist(<span class="string">"Exponential"</span>,<span class="string">'mu'</span>,3);
 pTail = 1-cdf(expD,2.6);
 disp(<span class="string">"    "</span>+pTail*100+<span class="string">"%"</span>)
 pHead = cdf(expD,2.6);
@@ -151,7 +148,7 @@ disp(norminv(pHead))
     7.4274%
     1.4447
 
-</pre><h2 id="11">Non-Continuous Distributions</h2><h2 id="12">Section 1B</h2><p>Plots a series of plots with different parameters. One feature I notice is a stair-like plot to prevent noninteger events. For example, it doesn't make sense for 5.4 cellphones to be sold but it makes sense for there to only be 5 or 6 cellphones to be sold. Another feature I notice is the number of instances in x = 0 decrease as lambda increases. To add on to this, there are the most instances lambda.</p><pre class="codeinput">x = 0:10;
+</pre><h2 id="12">Non-Continuous Distributions</h2><h2 id="13">Section 1B</h2><p>Plots a series of plots with different parameters. One feature I notice is a stair-like plot to prevent noninteger events. For example, it doesn't make sense for 5.4 cellphones to be sold but it makes sense for there to only be 5 or 6 cellphones to be sold. Another feature I notice is the number of instances in x = 0 decrease as lambda increases. To add on to this, there are the most instances lambda.</p><pre class="codeinput">x = 0:10;
 poisson = makedist(<span class="string">"Poisson"</span>,<span class="string">'lambda'</span>,1);
 subplot(1,2,2)
 stairs(x-0.5,pdf(poisson,x),<span class="string">"LineWidth"</span>,2);
@@ -174,7 +171,7 @@ subplot(1,2,1)
 stairs(x-0.5,pdf(poisson,x),<span class="string">"LineWidth"</span>,2);
 title(<span class="string">"Poisson Distribution with \lambda = 6"</span>);
 xlabel(<span class="string">"Events"</span>); ylabel(<span class="string">"Probability"</span>);
-</pre><img vspace="5" hspace="5" src="Lab1_04.png" alt=""> <img vspace="5" hspace="5" src="Lab1_05.png" alt=""> <h2 id="13">Section 1C</h2><p>My hypothetical question is "What is the probability of the background producing a signal of 3.2 or larger?". I also calculate the corresponding probability for this question.</p><pre class="codeinput">poissonD = makedist(<span class="string">"Poisson"</span>,<span class="string">'lambda'</span>,3.2);
+</pre><img vspace="5" hspace="5" src="Lab1_Code_04.png" alt=""> <img vspace="5" hspace="5" src="Lab1_Code_05.png" alt=""> <h2 id="14">Section 1C</h2><p>My hypothetical question is "What is the probability of the background producing a signal of 3.2 or larger?". I also calculate the corresponding probability for this question.</p><pre class="codeinput">poissonD = makedist(<span class="string">"Poisson"</span>,<span class="string">'lambda'</span>,3.2);
 pTail = 1-cdf(poissonD,3.2);
 disp(<span class="string">"    "</span>+pTail*100+<span class="string">"%"</span>)
 pHead = cdf(poissonD,3.2);
@@ -182,7 +179,7 @@ disp(norminv(pHead))
 </pre><pre class="codeoutput">    39.748%
     0.2599
 
-</pre><h2 id="14">Section 1D</h2><p>Since the distributions are discrete, the probabilities and sigmas are also discrete. The implication of this in an experiment is how we only expect certain values. For example, we will expect integer numbers and not numbers like 1.2, 5.28, and the like. Also, we know that the distribution will list every possible outcome and that the sum of all the probabilities will be equal to one as long as the distribution is normalized.</p><h2 id="15">Section 1E</h2><p>Although the results are discrete, the parameters aren't. This means the mean of a Poisson distribution can be a non-integer number like 9.2. The reason why this makes sense is because the total number of events change over time but this doesn't change what types of resuls we expect which is only integer numbers. So if the sum of all my outcomes is 10 but I increase my total number of outcomes from 2 to 3, we will observe this result where the mean shifts from 5 to 3.33.</p><p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2018b</a><br></p></div><!--
+</pre><h2 id="15">Section 1D</h2><p>Since the distributions are discrete, the probabilities and sigmas are also discrete. The implication of this in an experiment is how we only expect certain values. For example, we will expect integer numbers and not numbers like 1.2, 5.28, and the like. Also, we know that the distribution will list every possible outcome and that the sum of all the probabilities will be equal to one as long as the distribution is normalized.</p><h2 id="16">Section 1E</h2><p>Although the results are discrete, the parameters aren't. This means the mean of a Poisson distribution can be a non-integer number like 9.2. The reason why this makes sense is because the total number of events change over time but this doesn't change what types of resuls we expect which is only integer numbers. So if the sum of all my outcomes is 10 but I increase my total number of outcomes from 2 to 3, we will observe this result where the mean shifts from 5 to 3.33.</p><p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2018b</a><br></p></div><!--
 ##### SOURCE BEGIN #####
 %% Lab 1
 
