@@ -51,13 +51,7 @@ disp(mean);
 % The variance is given by sum[(x-mean)f(x)]. From the previous part, we
 % know f(x)=1/6 for all values since there is an equal chance to roll each
 % value. Also, mean is 7 and values of x are {1,2,3,4,5,6,1,2,3,4,5,6}. So
-% if we compute sum[f(x)*(x-mean)^2], we get 1/6*sum[(x-7)^2]=30.333. 
-
-variance = 0;
-for c = 1:length(x)
-variance = variance+(x(1,c)-mean)^2/6;
-end
-disp(variance);
+% if we compute sum
 
 %% Problem 4
 probs = [0,1/6,1/6,1/6,1/6,1/6,1/6,0];
