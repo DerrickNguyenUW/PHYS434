@@ -121,4 +121,7 @@ legend('Distribution 1, \mu = 3, \sigma = 4',...
 % deviation of D3 is 5. Thus, this shows how the standard deviation of the
 % resulting sum of Gaussian distributions changes. The average of D3 is
 % simply the sum of the averages of D1 and D2 which are 3 and 2
-% respectively. So the average of D3 is 5. 
+% respectively. So the average of D3 is 5. This means if we explore a
+% signal over a long period of time, we will expect the standard deviation
+% to increase which corresponds in a wider width in the Gaussian
+% distribution. This makes sense since we expect noise to affect our data. 
