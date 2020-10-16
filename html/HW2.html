@@ -1,0 +1,272 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>Homework 2</title><meta name="generator" content="MATLAB 9.5"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2020-10-15"><meta name="DC.source" content="HW2.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; } 
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><h1>Homework 2</h1><!--introduction--><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Problem 1</a></li><li><a href="#2">Problem 2</a></li><li><a href="#3">Problem 3</a></li><li><a href="#4">Problem 4</a></li><li><a href="#5">Problem 5</a></li></ul></div><h2 id="1">Problem 1</h2><p>The probability of rolling snake eyes is given by the product of the probability of rolling a one on each die which is 1/36. The probability of rolling a sum of seven is 6/36 or 1/6. I arrived at this answer since the probability of rolling a sum of seven given the first dice already has a value is 1/36. There are six different ways to roll a sum of seven so 6*(1/36) is 6/36 or 1/6. This means it is more probable to roll a sum of seven than it is to roll snake eyes since 1/6 is greater than 1/36.</p><h2 id="2">Problem 2</h2><p>Analytic Method (Math and Counting) Shows the probability of rolling a certain sum using two dice. Also lists the possible outcomes to achieve that sum. Sum of 1:  0/36 {} Sum of 2:  1/36 {(1,1)} Sum of 3:  2/36 {(1,2),(2,1)} Sum of 4:  3/36 {(1,3),(2,2),(3,1)} Sum of 5:  4/36 {(1,4),(2,3),(3,2),(4,1)} Sum of 6:  5/36 {(1,5),(2,4),(3,3),(4,2),(5,1)} Sum of 7:  6/36 {(1,6),(2,5),(3,4),(4,3),(5,2),(6,1)} Sum of 8:  5/36 {(2,6),(3,5),(4,4),(5,3),(6,2)} Sum of 9:  4/36 {(3,6),(4,5),(5,4),(6,3)} Sum of 10: 3/36 {(4,6),(5,5),(6,4)} Sum of 11: 2/36 {(5,6),(6,5)} Sum of 12: 1/36 {(6,6)} Sum of 13: 0/36 {}</p><pre class="codeinput"><span class="comment">% Numeric Method (Computer Program)</span>
+<span class="comment">% This method performs a convolution on itself to show the probability of</span>
+<span class="comment">% two dice. The reason a convolution is performed on itself is because both</span>
+<span class="comment">% dice share the same probability of 1/6 since each value has an equal</span>
+<span class="comment">% probability to be rolled on a six-sided die. Here, we see the numeric</span>
+<span class="comment">% method is consistent with the probabilities calculated in the analytic</span>
+<span class="comment">% method section.</span>
+probs = [0,1/6,1/6,1/6,1/6,1/6,1/6,0];
+convu = conv(probs,probs);
+plot(0:length(convu)-1, convu);
+title(<span class="string">"Probability of Sum of Two Six-Sided Dice"</span>);
+xlabel(<span class="string">"Sum"</span>); ylabel(<span class="string">"Probability"</span>); figure;
+</pre><img vspace="5" hspace="5" src="HW2_01.png" alt=""> <img vspace="5" hspace="5" src="HW2_02.png" alt=""> <h2 id="3">Problem 3</h2><p>Mean From the plot in the previous problem, the mean is 7. The mean is given by sum[x*f(x)] where f(x)=1/6 for all values since there is an equal chance to roll each value. The values of x are {1,2,3,4,5,6,1,2,3,4,5,6} which are all the values that can be rolled from two dice. So if we compute sum[x*f(x)], we get 1/6*sum(x)=42/6=7. This mathematical approach is consistent with the mean shown in the graph since mean is 7. Another thing to point out is the mean of one die is 3.5 so the mean of n die is simply n times 3.5. In this case, we have two dice so 2*3.5 = 7 which is consistent with the previous two methods.</p><pre class="codeinput">x = [1,2,3,4,5,6,1,2,3,4,5,6];
+mean = sum(x)/6;
+disp(mean);
+
+<span class="comment">% Variance</span>
+<span class="comment">% The variance is given by sum[(x-mean)f(x)]. From the previous part, we</span>
+<span class="comment">% know f(x)=1/6 for all values since there is an equal chance to roll each</span>
+<span class="comment">% value. Also, the mean for one die is 3.5 and the values of x are</span>
+<span class="comment">% [1,2,3,4,5,6]. So if we compute the variance of one die, we get 2.196.</span>
+<span class="comment">% Now, if we want the variance of two dice, we simply multiple the variance</span>
+<span class="comment">% of one die by two which gives us a result of 5.833. This means you can</span>
+<span class="comment">% simply multiply n to the variance of one die to find the variance of n</span>
+<span class="comment">% die. This is because they are independent of one another.</span>
+
+variance = 0;
+x = [1,2,3,4,5,6];
+<span class="keyword">for</span> c = 1:length(x)
+variance = variance+(x(1,c)-3.5)^2/6;
+<span class="keyword">end</span>
+disp(2*variance);
+</pre><pre class="codeoutput">     7
+
+    5.8333
+
+</pre><h2 id="4">Problem 4</h2><pre class="codeinput">probs = [0,1/6,1/6,1/6,1/6,1/6,1/6,0];
+convu = conv(probs,probs);
+<span class="keyword">for</span> c = 1:8
+   convu = conv(convu,probs);
+<span class="keyword">end</span>
+x = 0:length(convu)-1;
+plot(x/10, convu);
+title(<span class="string">"Probability of Sum of Ten Six-Sided Dice"</span>);
+xlabel(<span class="string">"Sum"</span>); ylabel(<span class="string">"Probability"</span>); figure;
+
+<span class="comment">% According the Central Limit Theorem, most distributions when summed or</span>
+<span class="comment">% averaged over enough trials will converge to a Gaussian pdf. This can be</span>
+<span class="comment">% seen if we compare the pdf of the sum of two six-sided dice and that of</span>
+<span class="comment">% ten six-sided dice. The pdf with two dice has a very sharp</span>
+<span class="comment">% triangular-shaped graph but the pdf with ten dice has a smooth curve</span>
+<span class="comment">% which looks like a Gaussian distribution. From the shape of these two</span>
+<span class="comment">% pdfs, we can see how the Central Limit Theorem takes effect. Therefore, I</span>
+<span class="comment">% would say this is a Gaussian distribution.</span>
+</pre><img vspace="5" hspace="5" src="HW2_03.png" alt=""> <img vspace="5" hspace="5" src="HW2_04.png" alt=""> <h2 id="5">Problem 5</h2><p>This part shows that the sum of an initially Gaussian distribution is also a Gaussian distribution. This is shown by defining two Gaussian distributions "gdist1" and "gdist2" and a third Gaussian distribution "gidst3" which is the sum of the first two Gaussian distributions. I plot each of them on the same plot to show all three functions and how each have characteristics of a Gaussian distribution.</p><pre class="codeinput">x = -15:15;
+gdist1 = makedist(<span class="string">"Normal"</span>,<span class="string">'mu'</span>,3,<span class="string">'sigma'</span>,4);
+gdist2 = makedist(<span class="string">"Normal"</span>,<span class="string">'mu'</span>,2,<span class="string">'sigma'</span>,3);
+gdist3 = pdf(gdist1,x)+pdf(gdist2,x);
+plot(x,pdf(gdist1,x),x,pdf(gdist2,x),x,gdist3,<span class="string">'LineWidth'</span>,2);
+title(<span class="string">"Gaussian Distributions"</span>);
+xlabel(<span class="string">"Observations"</span>); ylabel(<span class="string">"Probability"</span>);
+legend(<span class="string">'Distribution 1, \mu = 3, \sigma = 4'</span>,<span class="keyword">...</span>
+       <span class="string">'Distribution 2, \mu = 2, \sigma = 3'</span>,<span class="keyword">...</span>
+       <span class="string">'Sum of Distribution 1 and 2'</span>, <span class="string">'Location'</span>, <span class="string">'Northwest'</span>);
+
+<span class="comment">% From the plot of Distribution 1, 2, and 3 (D1, D2, and D3 respectively),</span>
+<span class="comment">% we know the standard deviation of the resulting sum or average Gaussian</span>
+<span class="comment">% distribution changes. The standard deviation of D1 and D2 are 4 and 3</span>
+<span class="comment">% respectively. In order to calculate the standard deviation of D3, we must</span>
+<span class="comment">% find the variance of D3 first since variance is equal to the square of</span>
+<span class="comment">% the standard deviation. So the variance of D3 is equal to the sum of the</span>
+<span class="comment">% variance of D1 and D2 which is 4^2 + 3^3 = 25. Now, the standard</span>
+<span class="comment">% deviation of D3 is 5. Thus, this shows how the standard deviation of the</span>
+<span class="comment">% resulting sum of Gaussian distributions changes. The average of D3 is</span>
+<span class="comment">% simply the sum of the averages of D1 and D2 which are 3 and 2</span>
+<span class="comment">% respectively. So the average of D3 is 5.</span>
+</pre><img vspace="5" hspace="5" src="HW2_05.png" alt=""> <p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2018b</a><br></p></div><!--
+##### SOURCE BEGIN #####
+%% Homework 2
+
+%% Problem 1
+% The probability of rolling snake eyes is given by the product of the
+% probability of rolling a one on each die which is 1/36. The probability
+% of rolling a sum of seven is 6/36 or 1/6. I arrived at this answer since
+% the probability of rolling a sum of seven given the first dice already
+% has a value is 1/36. There are six different ways to roll a sum of seven
+% so 6*(1/36) is 6/36 or 1/6. This means it is more probable to roll a sum
+% of seven than it is to roll snake eyes since 1/6 is greater than 1/36. 
+
+%% Problem 2
+% Analytic Method (Math and Counting)
+% Shows the probability of rolling a certain sum using two dice. Also lists
+% the possible outcomes to achieve that sum. 
+% Sum of 1:  0/36 {}
+% Sum of 2:  1/36 {(1,1)}
+% Sum of 3:  2/36 {(1,2),(2,1)}
+% Sum of 4:  3/36 {(1,3),(2,2),(3,1)}
+% Sum of 5:  4/36 {(1,4),(2,3),(3,2),(4,1)}
+% Sum of 6:  5/36 {(1,5),(2,4),(3,3),(4,2),(5,1)}
+% Sum of 7:  6/36 {(1,6),(2,5),(3,4),(4,3),(5,2),(6,1)}
+% Sum of 8:  5/36 {(2,6),(3,5),(4,4),(5,3),(6,2)}
+% Sum of 9:  4/36 {(3,6),(4,5),(5,4),(6,3)}
+% Sum of 10: 3/36 {(4,6),(5,5),(6,4)}
+% Sum of 11: 2/36 {(5,6),(6,5)}
+% Sum of 12: 1/36 {(6,6)}
+% Sum of 13: 0/36 {}
+
+% Numeric Method (Computer Program)
+% This method performs a convolution on itself to show the probability of
+% two dice. The reason a convolution is performed on itself is because both
+% dice share the same probability of 1/6 since each value has an equal
+% probability to be rolled on a six-sided die. Here, we see the numeric
+% method is consistent with the probabilities calculated in the analytic
+% method section. 
+probs = [0,1/6,1/6,1/6,1/6,1/6,1/6,0];
+convu = conv(probs,probs);
+plot(0:length(convu)-1, convu);
+title("Probability of Sum of Two Six-Sided Dice");
+xlabel("Sum"); ylabel("Probability"); figure;
+
+%% Problem 3
+% Mean
+% From the plot in the previous problem, the mean is 7. The mean is given
+% by sum[x*f(x)] where f(x)=1/6 for all values since there is an equal
+% chance to roll each value. The values of x are {1,2,3,4,5,6,1,2,3,4,5,6}
+% which are all the values that can be rolled from two dice. So if we
+% compute sum[x*f(x)], we get 1/6*sum(x)=42/6=7. This mathematical approach
+% is consistent with the mean shown in the graph since mean is 7. Another
+% thing to point out is the mean of one die is 3.5 so the mean of n die is
+% simply n times 3.5. In this case, we have two dice so 2*3.5 = 7 which is
+% consistent with the previous two methods. 
+
+x = [1,2,3,4,5,6,1,2,3,4,5,6];
+mean = sum(x)/6;
+disp(mean);
+
+% Variance
+% The variance is given by sum[(x-mean)f(x)]. From the previous part, we
+% know f(x)=1/6 for all values since there is an equal chance to roll each
+% value. Also, the mean for one die is 3.5 and the values of x are
+% [1,2,3,4,5,6]. So if we compute the variance of one die, we get 2.196.
+% Now, if we want the variance of two dice, we simply multiple the variance
+% of one die by two which gives us a result of 5.833. This means you can
+% simply multiply n to the variance of one die to find the variance of n
+% die. This is because they are independent of one another. 
+
+variance = 0; 
+x = [1,2,3,4,5,6];
+for c = 1:length(x)
+variance = variance+(x(1,c)-3.5)^2/6;
+end
+disp(2*variance);
+
+%% Problem 4
+probs = [0,1/6,1/6,1/6,1/6,1/6,1/6,0];
+convu = conv(probs,probs);
+for c = 1:8
+   convu = conv(convu,probs); 
+end
+x = 0:length(convu)-1;
+plot(x/10, convu); 
+title("Probability of Sum of Ten Six-Sided Dice");
+xlabel("Sum"); ylabel("Probability"); figure;
+
+% According the Central Limit Theorem, most distributions when summed or
+% averaged over enough trials will converge to a Gaussian pdf. This can be
+% seen if we compare the pdf of the sum of two six-sided dice and that of
+% ten six-sided dice. The pdf with two dice has a very sharp
+% triangular-shaped graph but the pdf with ten dice has a smooth curve
+% which looks like a Gaussian distribution. From the shape of these two
+% pdfs, we can see how the Central Limit Theorem takes effect. Therefore, I
+% would say this is a Gaussian distribution. 
+
+%% Problem 5
+% This part shows that the sum of an initially Gaussian distribution is
+% also a Gaussian distribution. This is shown by defining two Gaussian
+% distributions "gdist1" and "gdist2" and a third Gaussian distribution
+% "gidst3" which is the sum of the first two Gaussian distributions. I plot
+% each of them on the same plot to show all three functions and how each
+% have characteristics of a Gaussian distribution. 
+x = -15:15;
+gdist1 = makedist("Normal",'mu',3,'sigma',4);
+gdist2 = makedist("Normal",'mu',2,'sigma',3);
+gdist3 = pdf(gdist1,x)+pdf(gdist2,x);
+plot(x,pdf(gdist1,x),x,pdf(gdist2,x),x,gdist3,'LineWidth',2);
+title("Gaussian Distributions");
+xlabel("Observations"); ylabel("Probability"); 
+legend('Distribution 1, \mu = 3, \sigma = 4',... 
+       'Distribution 2, \mu = 2, \sigma = 3',...
+       'Sum of Distribution 1 and 2', 'Location', 'Northwest');
+   
+% From the plot of Distribution 1, 2, and 3 (D1, D2, and D3 respectively),
+% we know the standard deviation of the resulting sum or average Gaussian
+% distribution changes. The standard deviation of D1 and D2 are 4 and 3
+% respectively. In order to calculate the standard deviation of D3, we must
+% find the variance of D3 first since variance is equal to the square of
+% the standard deviation. So the variance of D3 is equal to the sum of the
+% variance of D1 and D2 which is 4^2 + 3^3 = 25. Now, the standard
+% deviation of D3 is 5. Thus, this shows how the standard deviation of the
+% resulting sum of Gaussian distributions changes. The average of D3 is
+% simply the sum of the averages of D1 and D2 which are 3 and 2
+% respectively. So the average of D3 is 5. 
+##### SOURCE END #####
+--></body></html>
