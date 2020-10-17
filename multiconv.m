@@ -1,7 +1,7 @@
 function multiconv = multiconv(bg,n)
-% This function takes in a background 'bg' and number of times user wants to
-% perform a convolution on itself 'n'. This function doesn't consider cases
-% like negative numbers, zero, and one. 
+% This function takes in a background "bg" and a number of times user wants
+% to convolute the background with itself "n". This function does not
+% handle the case where n is negative, zero, or one. 
 multiconv = conv(bg,bg);
 for c = 0:n-3
    multiconv = conv(multiconv, bg); 
