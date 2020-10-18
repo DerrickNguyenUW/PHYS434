@@ -3,8 +3,8 @@ function multiconv = multiconv(bg,n)
 % to convolute the background with itself "n". This function does not
 % handle the case where n is negative, zero, or one. 
 multiconv = conv(bg,bg);
-for c = 0:n-3
-   multiconv = conv(multiconv, bg); 
+for c = 1:n-2
+   multiconv = conv(multiconv,bg); 
 end
 
 end
