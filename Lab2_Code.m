@@ -46,17 +46,15 @@ xlabel("Number of Cosmic-Ray Background"); ylabel("Probability"); figure;
 
 % CONTINUE SENTENCE
 
-%% Section 1C % INCORRECT
+%% Section 1C 
 % Shows how the probability distribution evolves as we average days. The
 % shape of the distribution gets thinner and the discrete features almost
 % smooths out as the number of days become larger. This can be explained by
 % the Central Limit Theorem which states a distribution will approximate a
 % normal distribution as the sample size becomes larger. In relation to
-% Problem 1B, we 
-
-%Also, the
-% amplitude at the mean decreases but the mean doesn't shift when we
-% average days. 
+% Problem 1B, we can see how the step size of the distribution gets
+% smaller. We expect the step size to become so small that it can
+% approximate a normal distribution according to the Central Limit Theorem.
 
 % Average over 2 days
 pconv = multiconv(pbg,2);
@@ -152,17 +150,20 @@ legend("N = 10","N = 20","N = 30","N = 40"); hold off;
 
 %% Section 3A (Version 1)
 % Here, we make a Gaussian distribution with mu = 0 and sigma = 5.
-% Afterwards, we calculate the probability of an 8.6 signal using the cdf()
+% Afterwards, we calculate the probability of a signal of 26 using the cdf()
 % function. We put this value into the norminv() function calculate the
-% sigma. From this, we get a sigma of 1.72 which means we cannot claim a
-% discovery since that's associated with 5-sigma. 
+% sigma. From this, we get a sigma of 5.2 which means we can claim a
+% discovery since that's associated with 5-sigma and our sigma is greater 
+% than 5-sigma. 
 gdist = makedist("Normal",'mu',0,'sigma',5);
-gprob = cdf(gdist,8.6);
+gprob = cdf(gdist,26);
 gsigma = norminv(gprob);
 disp(gsigma);
 
 %% Section 3B (Version 2)
-% The statistical question I want to ask is...
+% The statistical question I want to ask is "What is the expected number of
+% pixels we will be see given a signal reading of some strength?" This
+% shows a probability distribution of 10k pixels. 
 gdist = makedist("Normal",'mu',0,'sigma',5);
 gpdf = pdf(gdist,-30:30);
 gprobf = gpdf*10000;
@@ -175,30 +176,55 @@ xlabel("Observations"); ylabel("Probability");
 % distributions for each pixel are identical and independent from one
 % another, we simply multiply the pdf of one pixel by 10k. 
 
-%% Section 3C (Version 2) % iNCOrrECT
+%% Section 3C (Version 2) 
 % Calculates the signifance of the detection of the brightest candidtate 
-% pixel from the region with signal 8.6. 
-gdist = makedist("Normal",'mu',0,'sigma',gsigma);
-gprob = cdf(gdist,8.6);
+% pixel from the region with signal 26. 
+gdist = makedist("Normal",'mu',0,'sigma',5);
+gprob = (1-cdf(gdist,26))*10000;
 gsigma = norminv(gprob);
-disp(gsigma);
+disp(-gsigma);
 
 %% Problem 4
 
 %% Section 4A
 % Calculates the signal required for a 5-sigma detection in Problem 3A
-% Version 1. Uses norminv() function with mu=0 and sigma=5. 
+% Version 1. Uses norminv() function with mu=0 and sigma=5. We found we
+% need a signal of 25 to get 5-sigma detection.
 gsignal = norminv(normcdf(5),0,5);
 disp(gsignal);
 
-%% Section 4B %INCORRECT
+%% Section 4B 
 % Calculates the signal required for a 5-sigma detection in Problem 3C
-% Version 2. Uses norminv() function with mu=0 and sigma=5. 
-gsignal = norminv(normcdf(5),0,500);
-disp(gsignal);
+% Version 2. We found we need a signal of 32 to get 5-sigma detection. 
+prob5sigma = 1/3.5e6;
+gdet = icdf(gdist, 1-prob5sigma/10000);
+disp(gdet);
 
 %% Section 4C
-% 
+% From our answers from 4A and 4B, we get 25 and 32 respectively. Comparing
+% these values, we see the signal needs to be 28% brighter for discovery if
+% I have a trial factor of 10k. The sensitivity penalty is so low because
+% the probability decreases by orders of magnitude further out in the tails
+% to account for a larger probability near the mean. So the probability
+% falls fast when the measurement slightly increases out in the tail. 
 
 %% Section 4D
-% 
+% Shows how the 5-sigma sensitivity threshold changes when the trial factor
+% changes significantly by orders of magnitude. Here, we see how the
+% detection required doesn't increase too significantly. 
+prob5sigma = 1/3.5e6;
+
+% Trial factor is 10k
+t = 10000;
+gdet = icdf(gdist, 1-prob5sigma/t);
+disp(gdet);
+
+% Trial factor is 100k
+t = 100000;
+gdet = icdf(gdist, 1-prob5sigma/t);
+disp(gdet);
+
+% Trial factor is 1000k
+t = 1000000;
+gdet = icdf(gdist, 1-prob5sigma/t);
+disp(gdet);
