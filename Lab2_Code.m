@@ -8,7 +8,7 @@
 %% Section 1A
 % Shows how the probability distribution changes as we integrate (sum) for
 % more days by convolving the background with itself N times. We notice how
-% the mean shifts, the width becomes thinner and the amplitude at the mean 
+% the mean shifts, the width becomes wider and the amplitude at the mean 
 % decreases as we integrate for more days. Also, the distribution is still 
 % a Poisson distribution. 
 pdist = makedist("Poisson",'lambda',8);
@@ -57,7 +57,7 @@ xlim([0 40]);
 title("Probability Distribution of Background Summed Over N Days");
 xlabel("Number of Cosmic-Ray Background"); 
 ylabel("Probability in Log Scale");
-legend("N = 2","N = 3","N = 4",'Location','Southeast'); hold off; figure;
+legend("N = 2","N = 3","N = 4",'Location','South'); hold off; figure;
 
 %% Section 1B
 % Shows how the summed probability distribution is still a Poisson
@@ -84,10 +84,10 @@ ylabel("Probability"); figure;
 % distribution. From a mathematical perspective, this makes sense because
 % the distribution does not have a small enough step size to approximate a
 % Gaussian distribution over 5 days. From a conceptual perspective, this
-% makes sense because we cannot have "negative days" which is why we don't
+% makes sense because we cannot have negative counts which is why we don't
 % observe any events before 0. From the semilog plot, we can see how the
 % distribution isn't symmetric because we cannot observe anything at
-% negative days. 
+% negative counts.
 
 %% Section 1C 
 % Shows how the probability distribution evolves as we average days. The
@@ -248,7 +248,8 @@ set(gca,'YScale','log'); hold on;
 
 title("Average Probability Distribution After N Intervals"); 
 xlabel("Observations"); ylabel("Probability in Log Scale"); 
-legend("N = 10","N = 20","N = 30","N = 40"); hold off; figure;
+legend("N = 10","N = 20","N = 30","N = 40",'Location','South'); 
+hold off; figure;
 
 %% Section 2B
 % According to the Central Limit Theorem, the distribution should

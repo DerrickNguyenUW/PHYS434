@@ -66,7 +66,7 @@ table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px soli
 
 
 
-  </style></head><body><div class="content"><h1>Lab 2</h1><!--introduction--><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Problem 1</a></li><li><a href="#2">Section 1A</a></li><li><a href="#3">Section 1B</a></li><li><a href="#4">Section 1C</a></li><li><a href="#5">Section 1D</a></li><li><a href="#6">Problem 2</a></li><li><a href="#7">Section 2A</a></li><li><a href="#8">Section 2B</a></li><li><a href="#9">Problem 3</a></li><li><a href="#10">Section 3A (Version 1)</a></li><li><a href="#11">Section 3B (Version 2)</a></li><li><a href="#12">Section 3C (Version 2)</a></li><li><a href="#13">Problem 4</a></li><li><a href="#14">Section 4A</a></li><li><a href="#15">Section 4B</a></li><li><a href="#16">Section 4C</a></li><li><a href="#17">Section 4D</a></li></ul></div><h2 id="1">Problem 1</h2><p>In this section, we see gamma-ray sources and a background of cosmis-rays using Fermi telescope. I selected my average cosmic-ray background value as X = 8 and my average number of gamma-rays emmitted as Y = 16.</p><h2 id="2">Section 1A</h2><p>Shows how the probability distribution changes as we integrate (sum) for more days by convolving the background with itself N times. We notice how the mean shifts, the width becomes thinner and the amplitude at the mean decreases as we integrate for more days. Also, the distribution is still a Poisson distribution.</p><pre class="codeinput">pdist = makedist(<span class="string">"Poisson"</span>,<span class="string">'lambda'</span>,8);
+  </style></head><body><div class="content"><h1>Lab 2</h1><!--introduction--><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Problem 1</a></li><li><a href="#2">Section 1A</a></li><li><a href="#3">Section 1B</a></li><li><a href="#4">Section 1C</a></li><li><a href="#5">Section 1D</a></li><li><a href="#6">Problem 2</a></li><li><a href="#7">Section 2A</a></li><li><a href="#8">Section 2B</a></li><li><a href="#9">Problem 3</a></li><li><a href="#10">Section 3A (Version 1)</a></li><li><a href="#11">Section 3B (Version 2)</a></li><li><a href="#12">Section 3C (Version 2)</a></li><li><a href="#13">Problem 4</a></li><li><a href="#14">Section 4A</a></li><li><a href="#15">Section 4B</a></li><li><a href="#16">Section 4C</a></li><li><a href="#17">Section 4D</a></li></ul></div><h2 id="1">Problem 1</h2><p>In this section, we see gamma-ray sources and a background of cosmis-rays using Fermi telescope. I selected my average cosmic-ray background value as X = 8 and my average number of gamma-rays emmitted as Y = 16.</p><h2 id="2">Section 1A</h2><p>Shows how the probability distribution changes as we integrate (sum) for more days by convolving the background with itself N times. We notice how the mean shifts, the width becomes wider and the amplitude at the mean decreases as we integrate for more days. Also, the distribution is still a Poisson distribution.</p><pre class="codeinput">pdist = makedist(<span class="string">"Poisson"</span>,<span class="string">'lambda'</span>,8);
 pbg = pdf(pdist,0:20);
 
 <span class="comment">% Sum over 2 days</span>
@@ -112,7 +112,7 @@ xlim([0 40]);
 title(<span class="string">"Probability Distribution of Background Summed Over N Days"</span>);
 xlabel(<span class="string">"Number of Cosmic-Ray Background"</span>);
 ylabel(<span class="string">"Probability in Log Scale"</span>);
-legend(<span class="string">"N = 2"</span>,<span class="string">"N = 3"</span>,<span class="string">"N = 4"</span>,<span class="string">'Location'</span>,<span class="string">'Southeast'</span>); hold <span class="string">off</span>; figure;
+legend(<span class="string">"N = 2"</span>,<span class="string">"N = 3"</span>,<span class="string">"N = 4"</span>,<span class="string">'Location'</span>,<span class="string">'South'</span>); hold <span class="string">off</span>; figure;
 </pre><img vspace="5" hspace="5" src="Lab2_Code_01.png" alt=""> <img vspace="5" hspace="5" src="Lab2_Code_02.png" alt=""> <img vspace="5" hspace="5" src="Lab2_Code_03.png" alt=""> <h2 id="3">Section 1B</h2><p>Shows how the summed probability distribution is still a Poisson distribution after 5 days.</p><pre class="codeinput"><span class="comment">% Sum over 5 days in log scale</span>
 pconv = multiconv(pbg,5);
 px = 0:length(pconv)-1;
@@ -134,10 +134,10 @@ ylabel(<span class="string">"Probability"</span>); figure;
 <span class="comment">% distribution. From a mathematical perspective, this makes sense because</span>
 <span class="comment">% the distribution does not have a small enough step size to approximate a</span>
 <span class="comment">% Gaussian distribution over 5 days. From a conceptual perspective, this</span>
-<span class="comment">% makes sense because we cannot have "negative days" which is why we don't</span>
+<span class="comment">% makes sense because we cannot have negative counts which is why we don't</span>
 <span class="comment">% observe any events before 0. From the semilog plot, we can see how the</span>
 <span class="comment">% distribution isn't symmetric because we cannot observe anything at</span>
-<span class="comment">% negative days.</span>
+<span class="comment">% negative counts.</span>
 </pre><img vspace="5" hspace="5" src="Lab2_Code_04.png" alt=""> <img vspace="5" hspace="5" src="Lab2_Code_05.png" alt=""> <h2 id="4">Section 1C</h2><p>Shows how the probability distribution evolves as we average days. The shape of the distribution gets thinner and the discrete features almost smooths out as the number of days become larger. This can be explained by the Central Limit Theorem which states a distribution will approximate a normal distribution as the sample size becomes larger. In relation to Problem 1B, we can see how the step size of the distribution gets smaller. We expect the step size to become so small that it can approximate a normal distribution according to the Central Limit Theorem.</p><pre class="codeinput"><span class="comment">% Average over 2 days</span>
 pconv = multiconv(pbg,2);
 px = 0:length(pconv)-1;
@@ -268,7 +268,8 @@ set(gca,<span class="string">'YScale'</span>,<span class="string">'log'</span>);
 
 title(<span class="string">"Average Probability Distribution After N Intervals"</span>);
 xlabel(<span class="string">"Observations"</span>); ylabel(<span class="string">"Probability in Log Scale"</span>);
-legend(<span class="string">"N = 10"</span>,<span class="string">"N = 20"</span>,<span class="string">"N = 30"</span>,<span class="string">"N = 40"</span>); hold <span class="string">off</span>; figure;
+legend(<span class="string">"N = 10"</span>,<span class="string">"N = 20"</span>,<span class="string">"N = 30"</span>,<span class="string">"N = 40"</span>,<span class="string">'Location'</span>,<span class="string">'South'</span>);
+hold <span class="string">off</span>; figure;
 </pre><img vspace="5" hspace="5" src="Lab2_Code_09.png" alt=""> <img vspace="5" hspace="5" src="Lab2_Code_10.png" alt=""> <img vspace="5" hspace="5" src="Lab2_Code_11.png" alt=""> <h2 id="8">Section 2B</h2><p>According to the Central Limit Theorem, the distribution should approximate a normal distribution when the observing interval increases. As the average observing intervals increased, the Rayleigh distribution changed. Specifically, the width becomes thinner, the amplitude at the mean decreased, and the shape became smoother. However, the mean did not shift. The Rayleigh distribution approached a Gaussian distribution after approximately 40 intervals according to the semilog plots from the previous part.</p><h2 id="9">Problem 3</h2><p>We are using an optical telescope with thermal noise background from the CCD. After flat-fielding, the background appears as a zero-mean Gaussian with constant width over the image. For this section, I selected the width of the background Gaussian distribution as X = 5 and the signal of strength as Y = 26.</p><h2 id="10">Section 3A (Version 1)</h2><p>Here, we make a Gaussian distribution with mu = 0 and sigma = 5. Afterwards, we calculate the probability of a signal of 26 using the cdf() function. We put this value into the norminv() function calculate the sigma. From this, we get a sigma of 5.2 which means we can claim a discovery since that's associated with 5-sigma and our sigma is greater than 5-sigma.</p><pre class="codeinput">gdist = makedist(<span class="string">"Normal"</span>,<span class="string">'mu'</span>,0,<span class="string">'sigma'</span>,5);
 gprob = cdf(gdist,26);
 gsigma = norminv(gprob);
@@ -292,7 +293,7 @@ gsigma = norminv(gprob);
 disp(gsigma);
 </pre><pre class="codeoutput">   -3.0913
 
-</pre><h2 id="13">Problem 4</h2><h2 id="14">Section 4A</h2><p>Calculates the signal required for a 5-sigma detection in Problem 3A Version 1. Uses norminv() function with mu=0 and sigma=5. We found we need a signal of 25 to get 5-sigma detection.</p><pre class="codeinput">gsignal = norminv(normcdf(5),0,5);
+</pre><h2 id="13">Problem 4</h2><h2 id="14">Section 4A</h2><p>Calculates the signal required for a 5-sigma detection in Problem 3A Version 1. Uses norminv() function with mu=0 and sigma=5. We found we need a signal of 25 to get 5-sigma detection.% Below, we put these graphs from above in semilog plot.</p><pre class="codeinput">gsignal = norminv(normcdf(5),0,5);
 disp(gsignal);
 </pre><pre class="codeoutput">   25.0000
 
@@ -335,7 +336,7 @@ disp(gdet);
 %% Section 1A
 % Shows how the probability distribution changes as we integrate (sum) for
 % more days by convolving the background with itself N times. We notice how
-% the mean shifts, the width becomes thinner and the amplitude at the mean 
+% the mean shifts, the width becomes wider and the amplitude at the mean 
 % decreases as we integrate for more days. Also, the distribution is still 
 % a Poisson distribution. 
 pdist = makedist("Poisson",'lambda',8);
@@ -384,7 +385,7 @@ xlim([0 40]);
 title("Probability Distribution of Background Summed Over N Days");
 xlabel("Number of Cosmic-Ray Background"); 
 ylabel("Probability in Log Scale");
-legend("N = 2","N = 3","N = 4",'Location','Southeast'); hold off; figure;
+legend("N = 2","N = 3","N = 4",'Location','South'); hold off; figure;
 
 %% Section 1B
 % Shows how the summed probability distribution is still a Poisson
@@ -411,10 +412,10 @@ ylabel("Probability"); figure;
 % distribution. From a mathematical perspective, this makes sense because
 % the distribution does not have a small enough step size to approximate a
 % Gaussian distribution over 5 days. From a conceptual perspective, this
-% makes sense because we cannot have "negative days" which is why we don't
+% makes sense because we cannot have negative counts which is why we don't
 % observe any events before 0. From the semilog plot, we can see how the
 % distribution isn't symmetric because we cannot observe anything at
-% negative days. 
+% negative counts.
 
 %% Section 1C 
 % Shows how the probability distribution evolves as we average days. The
@@ -575,7 +576,8 @@ set(gca,'YScale','log'); hold on;
 
 title("Average Probability Distribution After N Intervals"); 
 xlabel("Observations"); ylabel("Probability in Log Scale"); 
-legend("N = 10","N = 20","N = 30","N = 40"); hold off; figure;
+legend("N = 10","N = 20","N = 30","N = 40",'Location','South'); 
+hold off; figure;
 
 %% Section 2B
 % According to the Central Limit Theorem, the distribution should
@@ -635,7 +637,7 @@ disp(gsigma);
 %% Section 4A
 % Calculates the signal required for a 5-sigma detection in Problem 3A
 % Version 1. Uses norminv() function with mu=0 and sigma=5. We found we
-% need a signal of 25 to get 5-sigma detection.
+% need a signal of 25 to get 5-sigma detection.% Below, we put these graphs from above in semilog plot. 
 gsignal = norminv(normcdf(5),0,5);
 disp(gsignal);
 
