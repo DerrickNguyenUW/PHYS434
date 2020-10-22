@@ -1,0 +1,239 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>HW3</title><meta name="generator" content="MATLAB 9.5"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2020-10-21"><meta name="DC.source" content="HW3.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; } 
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><h1>HW3</h1><!--introduction--><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Problem 1</a></li><li><a href="#2">Section 1A</a></li><li><a href="#3">Section 1B</a></li><li><a href="#4">Section 1C</a></li><li><a href="#5">Problem 2</a></li><li><a href="#6">Section 2A</a></li><li><a href="#7">Section 2B</a></li><li><a href="#8">Section 2C</a></li></ul></div><h2 id="1">Problem 1</h2><p>In this problem, we have an identification system which prevents birds from escaping from an aviary. However, it is imperfect because it misidentifies birds as people and vice versa. However, these errors are not equally probable. We are told it is OK to misidentify a human but not OK to misidentify a bird. Below are truth tables for two algorithms called NN and NA respectively.</p><pre class="codeinput"><span class="comment">% turth table for NN</span>
+nn_orig = table([45;3],[5;47], <span class="string">'VariableNames'</span>,{<span class="string">'True_Bird'</span>,<span class="keyword">...</span>
+          <span class="string">'True_Person'</span>},<span class="string">'RowNames'</span>,{<span class="string">'NN Bird'</span>,<span class="string">'NN Person'</span>})
+
+<span class="comment">% truth table for NA</span>
+na_orig = table([47;1],[11;42], <span class="string">'VariableNames'</span>,{<span class="string">'True_Bird'</span>,<span class="keyword">...</span>
+          <span class="string">'True_Person'</span>},<span class="string">'RowNames'</span>,{<span class="string">'NN Bird'</span>,<span class="string">'NN Person'</span>})
+</pre><pre class="codeoutput">
+nn_orig =
+
+  2&times;2 table
+
+                 True_Bird    True_Person
+                 _________    ___________
+
+    NN Bird         45             5     
+    NN Person        3            47     
+
+
+na_orig =
+
+  2&times;2 table
+
+                 True_Bird    True_Person
+                 _________    ___________
+
+    NN Bird         47            11     
+    NN Person        1            42     
+
+</pre><h2 id="2">Section 1A</h2><p>We are given two algorithms labeled NN and NA. Out of 100 photos, NN makes a total of 8 miscategorizations. Out of 101 photos, NA makes a total of 11 miscategorizations. Based off of these numbers, we can say how NN makes fewer mistakes than NA since 8 mistakes is less than 11 mistakes.</p><h2 id="3">Section 1B</h2><p>Now, we have to determine which algorithm is better for the zoo. It is the zoo's main priority to prevent birds from escaping the aviary. This means it is OK with human misidentifications. In other words, we only care about less bird misidentifications and don't care about the number of human misidentifications. From the data, we see how NN makes 3 bird misidentifications and NA makes 1 bird misidentification. This manes NA is a better algorithm for the zoo because it prevents more birds from escaping the aviary. It is better for the zoo to have 1 bird escape than 3 birds. Thus, NA is the better algorithm for the zoo.</p><h2 id="4">Section 1C</h2><p>Now, we are given a situation where there are less people who frequent the zoo due to a pandemic. This means only 1% of the photos will be of humans instead of 52%. Below are the new truth tables with 1k photos to compensate for the fewer number of people visiting the zoo. The new numbers are determined to best maintain the ratio of number of a type of misidentification and total number of a type of animal. For example, NA misidentified 1 bird but correctly identified 47 birds. The ratio is then 1/(1+47). Now since birds represent 99% of the photos, we multiply this by 990 since 990 is 99% of 1000. In the case of a person, we multiply the ratio by 10 since 10 is 1% of 1000.</p><pre class="codeinput"><span class="comment">% ratios for NA</span>
+na_birdp = 1/(1+47);
+na_personp = 11/(11+42);
+
+<span class="comment">% ratios for NN</span>
+nn_birdp = 3/(3+45);
+nn_personp = 5/(5+47);
+
+<span class="comment">% misidentifications for NN during pandemic</span>
+nn_bird = round(nn_birdp*990);
+nn_person = round(nn_personp*10);
+
+<span class="comment">% misidentifications for NA during pandemic</span>
+na_bird = round(na_birdp*990);
+na_person = round(na_personp*10);
+
+<span class="comment">% new truth tables for NN and NA during pandemic with 1k photos</span>
+nn_pand = table([(990-nn_bird);nn_bird],[nn_person;(10-nn_person)],<span class="keyword">...</span>
+          <span class="string">'VariableNames'</span>,{<span class="string">'True_Bird'</span>,<span class="string">'True_Person'</span>},<span class="string">'RowNames'</span>,<span class="keyword">...</span>
+          {<span class="string">'NN Bird'</span>,<span class="string">'NN Person'</span>})
+
+na_pand = table([(990-na_bird);na_bird],[na_person;(10-na_person)],<span class="keyword">...</span>
+          <span class="string">'VariableNames'</span>,{<span class="string">'True_Bird'</span>,<span class="string">'True_Person'</span>},<span class="string">'RowNames'</span>,<span class="keyword">...</span>
+          {<span class="string">'NA Bird'</span>,<span class="string">'NA Person'</span>})
+</pre><pre class="codeoutput">
+nn_pand =
+
+  2&times;2 table
+
+                 True_Bird    True_Person
+                 _________    ___________
+
+    NN Bird         928            1     
+    NN Person        62            9     
+
+
+na_pand =
+
+  2&times;2 table
+
+                 True_Bird    True_Person
+                 _________    ___________
+
+    NA Bird         969            2     
+    NA Person        21            8     
+
+</pre><h2 id="5">Problem 2</h2><h2 id="6">Section 2A</h2><p>The pdf of the sum of two identical exponential distributions is Erlang distribution with shape 2 and parameter lambda which is the same as the original distribution. The Erlang distribution is a special case of the Gamma distribution. I found this answer on "Exponential Distribution" page on Wikipedia under the "Sum of two independent exponential random variables" section.</p><h2 id="7">Section 2B</h2><p>The pdf of the ratio of two zero-mean unity variance normal distributions is a Cauchy distribution. I found this answer on "Normal Ratio Distribution" page on Wolfram Math World.</p><h2 id="8">Section 2C</h2><p>The pdf of the amplitude of a vector of a 2D Gaussian distribution is a Rayleigh distribution. This is from the Lab 3 when we had to analyze a 2D Gaussian distribution from a picture of the sky.</p><p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2018b</a><br></p></div><!--
+##### SOURCE BEGIN #####
+%% HW3
+
+%% Problem 1
+% In this problem, we have an identification system which prevents birds
+% from escaping from an aviary. However, it is imperfect because it
+% misidentifies birds as people and vice versa. However, these errors are
+% not equally probable. We are told it is OK to misidentify a human but not
+% OK to misidentify a bird. Below are truth tables for two algorithms
+% called NN and NA respectively. 
+
+% turth table for NN
+nn_orig = table([45;3],[5;47], 'VariableNames',{'True_Bird',...
+          'True_Person'},'RowNames',{'NN Bird','NN Person'})
+
+% truth table for NA
+na_orig = table([47;1],[11;42], 'VariableNames',{'True_Bird',...
+          'True_Person'},'RowNames',{'NN Bird','NN Person'})
+      
+%% Section 1A
+% We are given two algorithms labeled NN and NA. Out of 100 photos, NN 
+% makes a total of 8 miscategorizations. Out of 101 photos, NA makes a
+% total of 11 miscategorizations. Based off of these numbers, we can say
+% how NN makes fewer mistakes than NA since 8 mistakes is less than 11
+% mistakes. 
+
+%% Section 1B
+% Now, we have to determine which algorithm is better for the zoo. It is
+% the zoo's main priority to prevent birds from escaping the aviary. This
+% means it is OK with human misidentifications. In other words, we only
+% care about less bird misidentifications and don't care about the number
+% of human misidentifications. From the data, we see how NN makes 3 bird
+% misidentifications and NA makes 1 bird misidentification. This manes NA
+% is a better algorithm for the zoo because it prevents more birds from
+% escaping the aviary. It is better for the zoo to have 1 bird escape than
+% 3 birds. Thus, NA is the better algorithm for the zoo. 
+
+%% Section 1C
+% Now, we are given a situation where there are less people who frequent
+% the zoo due to a pandemic. This means only 1% of the photos will be of
+% humans instead of 52%. Below are the new truth tables with 1k photos to 
+% compensate for the fewer number of people visiting the zoo. The new
+% numbers are determined to best maintain the ratio of number of a type of
+% misidentification and total number of a type of animal. For example, NA
+% misidentified 1 bird but correctly identified 47 birds. The ratio is then
+% 1/(1+47). Now since birds represent 99% of the photos, we multiply this
+% by 990 since 990 is 99% of 1000. In the case of a person, we multiply the
+% ratio by 10 since 10 is 1% of 1000. 
+
+% ratios for NA
+na_birdp = 1/(1+47); 
+na_personp = 11/(11+42);
+
+% ratios for NN
+nn_birdp = 3/(3+45);
+nn_personp = 5/(5+47);
+
+% misidentifications for NN during pandemic
+nn_bird = round(nn_birdp*990);
+nn_person = round(nn_personp*10);
+
+% misidentifications for NA during pandemic
+na_bird = round(na_birdp*990);
+na_person = round(na_personp*10);
+
+% new truth tables for NN and NA during pandemic with 1k photos
+nn_pand = table([(990-nn_bird);nn_bird],[nn_person;(10-nn_person)],...
+          'VariableNames',{'True_Bird','True_Person'},'RowNames',...
+          {'NN Bird','NN Person'})
+      
+na_pand = table([(990-na_bird);na_bird],[na_person;(10-na_person)],...
+          'VariableNames',{'True_Bird','True_Person'},'RowNames',...
+          {'NA Bird','NA Person'})
+
+%% Problem 2
+
+%% Section 2A
+% The pdf of the sum of two identical exponential distributions is Erlang
+% distribution with shape 2 and parameter lambda which is the same as the
+% original distribution. The Erlang distribution is a special case of the
+% Gamma distribution. I found this answer on "Exponential Distribution"
+% page on Wikipedia under the "Sum of two independent exponential random
+% variables" section. 
+
+%% Section 2B
+% The pdf of the ratio of two zero-mean unity variance normal distributions
+% is a Cauchy distribution. I found this answer on "Normal Ratio
+% Distribution" page on Wolfram Math World. 
+
+%% Section 2C
+% The pdf of the amplitude of a vector of a 2D Gaussian distribution is a
+% Rayleigh distribution. This is from the Lab 3 when we had to analyze a 2D
+% Gaussian distribution from a picture of the sky.
+##### SOURCE END #####
+--></body></html>
